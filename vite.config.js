@@ -2,11 +2,10 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
   ],
-  base: "/admission-crack/", 
+  base: "/", // এটিকে "/admission-crack/" থেকে পরিবর্তন করে শুধু "/" করে দিন
 })

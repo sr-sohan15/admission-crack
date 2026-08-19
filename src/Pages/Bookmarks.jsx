@@ -121,6 +121,9 @@ const Bookmarks = () => {
         sm:py-4
         space-y-5
         sm:space-y-6
+        text-slate-900
+        dark:text-slate-100
+        transition-colors
       "
     >
       {/* ==============================
@@ -135,8 +138,10 @@ const Bookmarks = () => {
           text-[11px]
           sm:text-xs
           font-bold
-          text-slate-400
-          hover:text-emerald-400
+          text-slate-600
+          dark:text-slate-400
+          hover:text-emerald-600
+          dark:hover:text-emerald-400
           transition-colors
           py-1
         "
@@ -151,9 +156,11 @@ const Bookmarks = () => {
       <div
         className="
           w-full
-          bg-slate-900
+          bg-white
+          dark:bg-slate-900
           border
-          border-slate-800
+          border-slate-200
+          dark:border-slate-800
           rounded-2xl
           sm:rounded-3xl
           p-4
@@ -167,13 +174,17 @@ const Bookmarks = () => {
           sm:items-center
           gap-4
           sm:gap-5
+          shadow-sm
+          dark:shadow-md
+          transition-colors
         "
       >
         {/* Header Text */}
         <div className="min-w-0 w-full">
           <span
             className="
-              text-amber-400
+              text-amber-600
+              dark:text-amber-400
               text-[10px]
               sm:text-xs
               font-bold
@@ -194,7 +205,8 @@ const Bookmarks = () => {
               sm:text-2xl
               lg:text-3xl
               font-extrabold
-              text-white
+              text-slate-900
+              dark:text-white
               mt-1.5
               leading-tight
               break-words
@@ -205,7 +217,8 @@ const Bookmarks = () => {
 
           <p
             className="
-              text-slate-400
+              text-slate-600
+              dark:text-slate-400
               text-[11px]
               sm:text-xs
               lg:text-sm
@@ -224,8 +237,10 @@ const Bookmarks = () => {
           className="
             w-full
             sm:w-auto
-            bg-amber-500/10
-            text-amber-400
+            bg-amber-500/15
+            dark:bg-amber-500/10
+            text-amber-700
+            dark:text-amber-400
             border
             border-amber-500/30
             px-3
@@ -253,9 +268,11 @@ const Bookmarks = () => {
         <div
           className="
             w-full
-            bg-slate-900/60
+            bg-slate-50
+            dark:bg-slate-900/60
             border
-            border-slate-800
+            border-slate-200
+            dark:border-slate-800
             rounded-2xl
             sm:rounded-3xl
             p-6
@@ -263,13 +280,15 @@ const Bookmarks = () => {
             lg:p-12
             text-center
             space-y-3
+            shadow-sm
           "
         >
           <FiBookmark
             className="
               text-3xl
               sm:text-4xl
-              text-slate-600
+              text-slate-400
+              dark:text-slate-600
               mx-auto
             "
           />
@@ -280,7 +299,8 @@ const Bookmarks = () => {
               sm:text-base
               lg:text-lg
               font-bold
-              text-white
+              text-slate-900
+              dark:text-white
             "
           >
             কোনো প্রশ্ন বুকমার্ক করা নেই!
@@ -290,7 +310,8 @@ const Bookmarks = () => {
             className="
               text-[11px]
               sm:text-xs
-              text-slate-400
+              text-slate-600
+              dark:text-slate-400
               max-w-sm
               sm:max-w-md
               mx-auto
@@ -304,7 +325,7 @@ const Bookmarks = () => {
         </div>
       ) : (
         /* ==============================
-           BOOKMARKED QUESTIONS
+            BOOKMARKED QUESTIONS
         ============================== */
         <div className="w-full space-y-3 sm:space-y-4">
           {bookmarkedQuestions.map((q, idx) => (
@@ -312,9 +333,11 @@ const Bookmarks = () => {
               key={q.id || idx}
               className="
                 w-full
-                bg-slate-900
+                bg-white
+                dark:bg-slate-900
                 border
-                border-slate-800
+                border-slate-200
+                dark:border-slate-800
                 rounded-2xl
                 sm:rounded-3xl
                 p-4
@@ -324,6 +347,7 @@ const Bookmarks = () => {
                 sm:space-y-4
                 shadow-sm
                 overflow-hidden
+                transition-colors
               "
             >
               {/* Question Top Bar */}
@@ -334,14 +358,17 @@ const Bookmarks = () => {
                   justify-between
                   gap-3
                   border-b
-                  border-slate-800
+                  border-slate-100
+                  dark:border-slate-800
                   pb-3
                 "
               >
                 <span
                   className="
-                    bg-slate-800
-                    text-slate-300
+                    bg-slate-100
+                    dark:bg-slate-800
+                    text-slate-700
+                    dark:text-slate-300
                     px-2
                     sm:px-2.5
                     py-1
@@ -370,9 +397,12 @@ const Bookmarks = () => {
                     items-center
                     justify-center
                     rounded-full
-                    text-red-400
-                    hover:text-red-300
-                    hover:bg-red-950/30
+                    text-red-500
+                    dark:text-red-400
+                    hover:text-red-700
+                    dark:hover:text-red-300
+                    hover:bg-red-50
+                    dark:hover:bg-red-950/30
                     transition-colors
                     cursor-pointer
                     shrink-0
@@ -391,12 +421,13 @@ const Bookmarks = () => {
                   sm:text-base
                   lg:text-lg
                   font-bold
-                  text-white
+                  text-slate-900
+                  dark:text-white
                   leading-relaxed
                   break-words
                 "
               >
-                <span className="text-emerald-400 mr-1.5">
+                <span className="text-emerald-600 dark:text-emerald-400 mr-1.5">
                   {idx + 1}.
                 </span>
 
@@ -411,7 +442,8 @@ const Bookmarks = () => {
                   w-full
                   p-3
                   sm:p-4
-                  bg-emerald-950/30
+                  bg-emerald-50
+                  dark:bg-emerald-950/30
                   border
                   border-emerald-500/30
                   rounded-xl
@@ -419,7 +451,8 @@ const Bookmarks = () => {
                   space-y-2
                   text-[11px]
                   sm:text-xs
-                  text-slate-300
+                  text-slate-700
+                  dark:text-slate-300
                   overflow-hidden
                 "
               >
@@ -428,7 +461,8 @@ const Bookmarks = () => {
                   <p
                     className="
                       font-bold
-                      text-emerald-400
+                      text-emerald-800
+                      dark:text-emerald-400
                       text-[11px]
                       sm:text-xs
                       lg:text-sm
@@ -444,7 +478,8 @@ const Bookmarks = () => {
                 {q.eliminationTip && (
                   <p
                     className="
-                      text-amber-300
+                      text-amber-800
+                      dark:text-amber-300
                       font-semibold
                       leading-relaxed
                       break-words
@@ -458,15 +493,17 @@ const Bookmarks = () => {
                 {q.explanation && (
                   <p
                     className="
-                      text-slate-400
+                      text-slate-600
+                      dark:text-slate-400
                       pt-2
                       border-t
-                      border-slate-800
+                      border-emerald-500/20
+                      dark:border-slate-800
                       leading-relaxed
                       break-words
                     "
                   >
-                    <strong className="text-slate-300">
+                    <strong className="text-slate-800 dark:text-slate-300">
                       ব্যাখ্যা:
                     </strong>{' '}
                     {q.explanation}

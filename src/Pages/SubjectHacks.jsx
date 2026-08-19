@@ -383,15 +383,15 @@ const SubjectHacks = () => {
   // =========================
   if (!currentSubject) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center px-4">
+      <div className="min-h-[60vh] flex items-center justify-center px-4 text-slate-900 dark:text-slate-100">
         <div className="text-center">
-          <h2 className="text-lg sm:text-xl font-bold text-white">
+          <h2 className="text-lg sm:text-xl font-bold">
             বিষয় পাওয়া যায়নি!
           </h2>
 
           <Link
             to="/science"
-            className="inline-flex mt-4 px-4 py-2.5 bg-emerald-500 text-slate-950 rounded-xl font-bold text-sm"
+            className="inline-flex mt-4 px-4 py-2.5 bg-emerald-500 text-slate-950 rounded-xl font-bold text-sm shadow"
           >
             সায়েন্স হোমে ফিরুন
           </Link>
@@ -513,6 +513,9 @@ const SubjectHacks = () => {
         space-y-5
         sm:space-y-6
         overflow-x-hidden
+        text-slate-900
+        dark:text-slate-100
+        transition-colors
       "
     >
 
@@ -535,16 +538,20 @@ const SubjectHacks = () => {
               text-xs
               sm:text-sm
               font-bold
-              text-emerald-400
-              hover:text-emerald-300
+              text-emerald-600
+              dark:text-emerald-400
+              hover:text-emerald-700
+              dark:hover:text-emerald-300
               transition-colors
-              bg-emerald-950/40
+              bg-emerald-50
+              dark:bg-emerald-950/40
               border
               border-emerald-500/30
               px-3
               sm:px-3.5
               py-2
               rounded-xl
+              cursor-pointer
             "
           >
             <FiArrowLeft />
@@ -554,17 +561,21 @@ const SubjectHacks = () => {
           {/* Page header */}
           <div
             className="
-              bg-slate-900
+              bg-white
+              dark:bg-slate-900
               border
-              border-slate-800
+              border-slate-200
+              dark:border-slate-800
               rounded-2xl
               sm:rounded-3xl
               p-4
               sm:p-6
               lg:p-7
               space-y-3
-              shadow-md
+              shadow-sm
+              dark:shadow-md
               overflow-hidden
+              transition-colors
             "
           >
             <div
@@ -582,8 +593,10 @@ const SubjectHacks = () => {
                 className="
                   w-fit
                   max-w-full
-                  bg-emerald-500/20
-                  text-emerald-300
+                  bg-emerald-500/15
+                  dark:bg-emerald-500/20
+                  text-emerald-700
+                  dark:text-emerald-300
                   text-[10px]
                   sm:text-xs
                   px-3
@@ -607,7 +620,8 @@ const SubjectHacks = () => {
                 className="
                   text-[11px]
                   sm:text-xs
-                  text-slate-400
+                  text-slate-500
+                  dark:text-slate-400
                   font-semibold
                 "
               >
@@ -622,7 +636,8 @@ const SubjectHacks = () => {
                 md:text-2xl
                 lg:text-3xl
                 font-black
-                text-white
+                text-slate-900
+                dark:text-white
                 leading-snug
                 break-words
               "
@@ -636,7 +651,8 @@ const SubjectHacks = () => {
                   text-[11px]
                   sm:text-xs
                   md:text-sm
-                  text-emerald-400
+                  text-emerald-600
+                  dark:text-emerald-400
                   font-medium
                   leading-relaxed
                   break-words
@@ -655,7 +671,8 @@ const SubjectHacks = () => {
                 text-[10px]
                 sm:text-xs
                 font-bold
-                text-slate-400
+                text-slate-600
+                dark:text-slate-400
                 uppercase
                 tracking-wider
                 flex
@@ -664,7 +681,7 @@ const SubjectHacks = () => {
                 leading-relaxed
               "
             >
-              <FiAlertTriangle className="text-amber-400 shrink-0 mt-0.5" />
+              <FiAlertTriangle className="text-amber-500 dark:text-amber-400 shrink-0 mt-0.5" />
 
               <span>
                 বিগত ১৫ বছরের রিপিটেড প্রশ্ন ও শর্টকাট সমাধান
@@ -685,9 +702,11 @@ const SubjectHacks = () => {
                     key={q.id || idx}
                     className="
                       w-full
-                      bg-slate-900
+                      bg-white
+                      dark:bg-slate-900
                       border
-                      border-slate-800
+                      border-slate-200
+                      dark:border-slate-800
                       rounded-2xl
                       sm:rounded-3xl
                       p-4
@@ -697,6 +716,7 @@ const SubjectHacks = () => {
                       space-y-4
                       shadow-sm
                       overflow-hidden
+                      transition-colors
                     "
                   >
 
@@ -709,14 +729,17 @@ const SubjectHacks = () => {
                         items-center
                         gap-2
                         border-b
-                        border-slate-800
+                        border-slate-100
+                        dark:border-slate-800
                         pb-3
                       "
                     >
                       <span
                         className="
-                          bg-slate-800
-                          text-slate-300
+                          bg-slate-100
+                          dark:bg-slate-800
+                          text-slate-700
+                          dark:text-slate-300
                           px-2
                           sm:px-2.5
                           py-1
@@ -742,8 +765,10 @@ const SubjectHacks = () => {
                           className="
                             text-[10px]
                             sm:text-xs
-                            text-emerald-400
-                            bg-emerald-950/60
+                            text-emerald-700
+                            dark:text-emerald-400
+                            bg-emerald-50
+                            dark:bg-emerald-950/60
                             px-2
                             sm:px-2.5
                             py-0.5
@@ -768,10 +793,11 @@ const SubjectHacks = () => {
                             btn-xs
                             text-base
                             shrink-0
+                            cursor-pointer
                             ${
                               isBookmarked
-                                ? 'text-amber-400'
-                                : 'text-slate-500 hover:text-slate-300'
+                                ? 'text-amber-500 dark:text-amber-400'
+                                : 'text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'
                             }
                           `}
                           title="Bookmark for Revision"
@@ -788,12 +814,13 @@ const SubjectHacks = () => {
                         sm:text-base
                         md:text-lg
                         font-bold
-                        text-white
+                        text-slate-900
+                        dark:text-white
                         leading-relaxed
                         break-words
                       "
                     >
-                      <span className="text-emerald-400 mr-1.5">
+                      <span className="text-emerald-600 dark:text-emerald-400 mr-1.5">
                         {idx + 1}.
                       </span>
 
@@ -837,8 +864,8 @@ const SubjectHacks = () => {
                                 transition-all
                                 ${
                                   isCorrect
-                                    ? 'border-emerald-500/60 bg-emerald-950/40 text-emerald-200 font-bold ring-1 ring-emerald-500/30'
-                                    : 'border-slate-800 bg-slate-950/40 text-slate-400'
+                                    ? 'border-emerald-500/60 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-bold ring-1 ring-emerald-500/30'
+                                    : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 text-slate-700 dark:text-slate-400'
                                 }
                               `}
                             >
@@ -854,7 +881,7 @@ const SubjectHacks = () => {
                                     mr-2
                                     ${
                                       isCorrect
-                                        ? 'text-emerald-400'
+                                        ? 'text-emerald-600 dark:text-emerald-400'
                                         : 'text-slate-500'
                                     }
                                   `}
@@ -908,15 +935,18 @@ const SubjectHacks = () => {
                       className="
                         p-3
                         sm:p-4
-                        bg-slate-950/70
+                        bg-slate-100
+                        dark:bg-slate-950/70
                         border
-                        border-slate-800
+                        border-slate-200
+                        dark:border-slate-800
                         rounded-xl
                         sm:rounded-2xl
                         space-y-3
                         text-[11px]
                         sm:text-xs
-                        text-slate-300
+                        text-slate-700
+                        dark:text-slate-300
                         overflow-hidden
                       "
                     >
@@ -937,7 +967,8 @@ const SubjectHacks = () => {
                               bg-emerald-500/10
                               border
                               border-emerald-500/30
-                              text-emerald-400
+                              text-emerald-700
+                              dark:text-emerald-400
                               text-[9px]
                               sm:text-[10px]
                               font-bold
@@ -952,7 +983,8 @@ const SubjectHacks = () => {
 
                           <p
                             className="
-                              text-emerald-300
+                              text-emerald-800
+                              dark:text-emerald-300
                               font-medium
                               leading-relaxed
                               break-words
@@ -980,7 +1012,8 @@ const SubjectHacks = () => {
                               bg-amber-500/10
                               border
                               border-amber-500/30
-                              text-amber-400
+                              text-amber-700
+                              dark:text-amber-400
                               text-[9px]
                               sm:text-[10px]
                               font-bold
@@ -995,7 +1028,8 @@ const SubjectHacks = () => {
 
                           <p
                             className="
-                              text-amber-200/90
+                              text-amber-900
+                              dark:text-amber-200/90
                               leading-relaxed
                               break-words
                               min-w-0
@@ -1013,13 +1047,15 @@ const SubjectHacks = () => {
                           className="
                             pt-2
                             border-t
-                            border-slate-800
-                            text-slate-400
+                            border-slate-200
+                            dark:border-slate-800
+                            text-slate-600
+                            dark:text-slate-400
                             leading-relaxed
                             break-words
                           "
                         >
-                          <strong className="text-slate-300 mr-1.5 font-semibold">
+                          <strong className="text-slate-800 dark:text-slate-300 mr-1.5 font-semibold">
                             বিস্তারিত ব্যাখ্যা:
                           </strong>
 
@@ -1038,7 +1074,7 @@ const SubjectHacks = () => {
       ) : (
 
         /* =================================================
-           CHAPTER LIST PAGE
+            CHAPTER LIST PAGE
         ================================================= */
 
         <div className="space-y-5 sm:space-y-6">
@@ -1053,8 +1089,10 @@ const SubjectHacks = () => {
               text-[11px]
               sm:text-xs
               font-bold
-              text-slate-400
-              hover:text-emerald-400
+              text-slate-600
+              dark:text-slate-400
+              hover:text-emerald-600
+              dark:hover:text-emerald-400
               transition-colors
             "
           >
@@ -1065,9 +1103,11 @@ const SubjectHacks = () => {
           {/* Subject header */}
           <div
             className="
-              bg-slate-900
+              bg-white
+              dark:bg-slate-900
               border
-              border-slate-800
+              border-slate-200
+              dark:border-slate-800
               rounded-2xl
               sm:rounded-3xl
               p-4
@@ -1076,6 +1116,7 @@ const SubjectHacks = () => {
               shadow-sm
               space-y-4
               overflow-hidden
+              transition-colors
             "
           >
             <div
@@ -1095,7 +1136,8 @@ const SubjectHacks = () => {
                   sm:text-2xl
                   md:text-3xl
                   font-extrabold
-                  text-white
+                  text-slate-900
+                  dark:text-white
                   leading-tight
                   break-words
                 "
@@ -1160,7 +1202,8 @@ const SubjectHacks = () => {
                   gap-2
                   pt-3
                   border-t
-                  border-slate-800
+                  border-slate-200
+                  dark:border-slate-800
                 "
               >
 
@@ -1185,7 +1228,7 @@ const SubjectHacks = () => {
                     ${
                       selectedPaper === '1st'
                         ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
-                        : 'bg-slate-950 border border-slate-800 text-slate-400 hover:border-slate-700'
+                        : 'bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700'
                     }
                   `}
                 >
@@ -1200,7 +1243,7 @@ const SubjectHacks = () => {
                       ${
                         selectedPaper === '1st'
                           ? 'bg-emerald-950 text-emerald-200'
-                          : 'bg-slate-800 text-slate-400'
+                          : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-400'
                       }
                     `}
                   >
@@ -1229,7 +1272,7 @@ const SubjectHacks = () => {
                     ${
                       selectedPaper === '2nd'
                         ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
-                        : 'bg-slate-950 border border-slate-800 text-slate-400 hover:border-slate-700'
+                        : 'bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700'
                     }
                   `}
                 >
@@ -1244,7 +1287,7 @@ const SubjectHacks = () => {
                       ${
                         selectedPaper === '2nd'
                           ? 'bg-emerald-950 text-emerald-200'
-                          : 'bg-slate-800 text-slate-400'
+                          : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-400'
                       }
                     `}
                   >
@@ -1276,7 +1319,8 @@ const SubjectHacks = () => {
                   text-[10px]
                   sm:text-xs
                   font-bold
-                  text-emerald-400
+                  text-emerald-600
+                  dark:text-emerald-400
                   uppercase
                   tracking-wider
                   flex
@@ -1284,7 +1328,7 @@ const SubjectHacks = () => {
                   gap-2
                 "
               >
-                <FiZap className="text-emerald-400 text-base" />
+                <FiZap className="text-emerald-600 dark:text-emerald-400 text-base" />
 
                 {currentSubject.hasPapers
                   ? selectedPaper === '1st'
@@ -1320,10 +1364,13 @@ const SubjectHacks = () => {
                       rounded-xl
                       sm:rounded-2xl
                       border
-                      border-slate-800
-                      bg-slate-900/90
+                      border-slate-200
+                      dark:border-slate-800
+                      bg-white
+                      dark:bg-slate-900/90
                       hover:border-emerald-500/60
-                      hover:bg-emerald-950/20
+                      hover:bg-emerald-50
+                      dark:hover:bg-emerald-950/20
                       transition-all
                       cursor-pointer
                       flex
@@ -1331,6 +1378,7 @@ const SubjectHacks = () => {
                       justify-between
                       gap-3
                       group
+                      shadow-sm
                     "
                   >
                     <div
@@ -1349,8 +1397,10 @@ const SubjectHacks = () => {
                           sm:w-9
                           sm:h-9
                           rounded-xl
-                          bg-emerald-500/10
-                          text-emerald-400
+                          bg-emerald-500/15
+                          dark:bg-emerald-500/10
+                          text-emerald-600
+                          dark:text-emerald-400
                           flex
                           items-center
                           justify-center
@@ -1367,8 +1417,10 @@ const SubjectHacks = () => {
                             font-bold
                             text-xs
                             sm:text-sm
-                            text-white
-                            group-hover:text-emerald-300
+                            text-slate-900
+                            dark:text-white
+                            group-hover:text-emerald-600
+                            dark:group-hover:text-emerald-300
                             break-words
                             leading-relaxed
                           "
@@ -1390,7 +1442,8 @@ const SubjectHacks = () => {
                           className="
                             text-[10px]
                             sm:text-[11px]
-                            text-slate-400
+                            text-slate-500
+                            dark:text-slate-400
                             mt-0.5
                           "
                         >
@@ -1401,8 +1454,9 @@ const SubjectHacks = () => {
 
                     <FiArrowRight
                       className="
-                        text-slate-500
-                        group-hover:text-emerald-400
+                        text-slate-400
+                        group-hover:text-emerald-600
+                        dark:group-hover:text-emerald-400
                         group-hover:translate-x-1
                         transition-all
                         shrink-0
@@ -1427,15 +1481,19 @@ const SubjectHacks = () => {
                         rounded-xl
                         sm:rounded-2xl
                         border
-                        border-slate-800
-                        bg-slate-900/70
+                        border-slate-200
+                        dark:border-slate-800
+                        bg-white
+                        dark:bg-slate-900/70
                         hover:border-emerald-500/50
-                        hover:bg-slate-850
+                        hover:bg-slate-50
+                        dark:hover:bg-slate-850
                         transition-all
                         cursor-pointer
                         space-y-2
                         group
                         overflow-hidden
+                        shadow-sm
                       "
                     >
 
@@ -1454,8 +1512,10 @@ const SubjectHacks = () => {
                             font-bold
                             text-xs
                             sm:text-sm
-                            text-white
-                            group-hover:text-emerald-400
+                            text-slate-900
+                            dark:text-white
+                            group-hover:text-emerald-600
+                            dark:group-hover:text-emerald-400
                             transition-colors
                             flex
                             items-start
@@ -1465,7 +1525,8 @@ const SubjectHacks = () => {
                         >
                           <FiBookOpen
                             className="
-                              text-emerald-400
+                              text-emerald-600
+                              dark:text-emerald-400
                               text-xs
                               shrink-0
                               mt-0.5
@@ -1481,8 +1542,10 @@ const SubjectHacks = () => {
                           className="
                             w-fit
                             text-[10px]
-                            bg-emerald-500/10
-                            text-emerald-400
+                            bg-emerald-500/15
+                            dark:bg-emerald-500/10
+                            text-emerald-700
+                            dark:text-emerald-400
                             px-2
                             py-0.5
                             rounded-md
@@ -1505,10 +1568,12 @@ const SubjectHacks = () => {
                           gap-1.5
                           text-[10px]
                           sm:text-[11px]
-                          text-slate-400
+                          text-slate-500
+                          dark:text-slate-400
                           pt-2
                           border-t
-                          border-slate-800/60
+                          border-slate-100
+                          dark:border-slate-800/60
                         "
                       >
                         <span
@@ -1523,7 +1588,8 @@ const SubjectHacks = () => {
 
                         <span
                           className="
-                            text-emerald-400
+                            text-emerald-600
+                            dark:text-emerald-400
                             font-semibold
                             whitespace-nowrap
                             flex
@@ -1559,7 +1625,8 @@ const SubjectHacks = () => {
                   text-[10px]
                   sm:text-xs
                   font-bold
-                  text-red-400
+                  text-red-500
+                  dark:text-red-400
                   uppercase
                   tracking-wider
                   flex
@@ -1568,7 +1635,7 @@ const SubjectHacks = () => {
                   leading-relaxed
                 "
               >
-                <FiXCircle className="text-red-400 text-base shrink-0" />
+                <FiXCircle className="text-red-500 dark:text-red-400 text-base shrink-0" />
 
                 <span>
                   একদম পড়বে না (১০০% বাদ / Skip)
@@ -1582,9 +1649,11 @@ const SubjectHacks = () => {
                     <div
                       key={idx}
                       className="
-                        bg-red-950/20
+                        bg-red-50
+                        dark:bg-red-950/20
                         border
-                        border-red-500/30
+                        border-red-200
+                        dark:border-red-500/30
                         p-3.5
                         sm:p-4
                         rounded-xl
@@ -1597,7 +1666,8 @@ const SubjectHacks = () => {
                     >
                       <span
                         className="
-                          text-red-400
+                          text-red-500
+                          dark:text-red-400
                           font-bold
                           text-sm
                           leading-none
@@ -1613,7 +1683,8 @@ const SubjectHacks = () => {
                           text-[11px]
                           sm:text-xs
                           font-semibold
-                          text-red-300
+                          text-red-700
+                          dark:text-red-300
                           leading-relaxed
                           break-words
                           min-w-0

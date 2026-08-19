@@ -8,12 +8,12 @@ const ForMyLove = ({ isOpen, onClose, photoUrl }) => {
 
   return (
     <>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-fadeIn">
-        <div className="relative max-w-lg w-full bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/60 border border-emerald-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/75 dark:bg-slate-950/80 backdrop-blur-sm animate-fadeIn overflow-y-auto">
+        <div className="relative max-w-lg w-full bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-900 dark:to-emerald-950/60 border border-slate-200 dark:border-emerald-500/40 rounded-3xl p-5 sm:p-8 shadow-2xl overflow-hidden my-auto max-h-[90vh] overflow-y-auto text-slate-900 dark:text-slate-100 transition-colors">
           
           <button 
             onClick={onClose}
-            className="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800/80 hover:bg-slate-700 p-2 rounded-full transition-colors z-20 cursor-pointer"
+            className="absolute top-4 right-4 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 p-2 rounded-full transition-colors z-20 cursor-pointer"
           >
             <FaTimes className="text-sm" />
           </button>
@@ -24,7 +24,7 @@ const ForMyLove = ({ isOpen, onClose, photoUrl }) => {
           <div className="flex flex-col items-center text-center space-y-4 relative z-10">
             
             <div className="relative group cursor-pointer" onClick={() => setIsFullView(true)} title="Click to view full photo ❤️">
-              <div className="w-28 h-28 rounded-2xl overflow-hidden border-2 border-emerald-400/60 shadow-lg shadow-emerald-500/10 p-1 bg-slate-950 hover:scale-105 transition-transform">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-emerald-400/60 shadow-lg shadow-emerald-500/10 p-1 bg-white dark:bg-slate-950 hover:scale-105 transition-transform">
                 {photoUrl ? (
                   <img 
                     src={photoUrl} 
@@ -32,7 +32,7 @@ const ForMyLove = ({ isOpen, onClose, photoUrl }) => {
                     className="w-full h-full object-cover rounded-xl"
                   />
                 ) : (
-                  <div className="w-full h-full bg-slate-900 flex flex-col items-center justify-center text-pink-500">
+                  <div className="w-full h-full bg-slate-100 dark:bg-slate-900 flex flex-col items-center justify-center text-pink-500">
                     <FaHeart className="text-3xl animate-pulse" />
                   </div>
                 )}
@@ -43,19 +43,19 @@ const ForMyLove = ({ isOpen, onClose, photoUrl }) => {
             </div>
 
             <div className="space-y-2">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400 text-xs font-bold">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-600 dark:text-pink-400 text-xs font-bold">
                 <FaStar className="text-[10px]" /> Special Dedication
               </div>
               
-              <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
-                For <span className="text-emerald-400">Tabiha Marzan Munia</span> ❤️
+              <h3 className="text-xl sm:text-2xl font-black tracking-tight">
+                For <span className="text-emerald-600 dark:text-emerald-400">Tabiha Marzan Munia</span> ❤️
               </h3>
 
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium pt-2">
-                "এই প্ল্যাটফর্মের সমস্ত কোড, শর্টকাট আর হ্যাকস হয়তো পরীক্ষার প্রস্তুতির জন্য, কিন্তু আমার জীবনের সবথেকে সুন্দর শর্টকাট আর খুশির কারণ শুধুই তুমি। তোমার প্রতিটা স্বপ্ন পূরণ হোক এবং তোমার মুখে সবসময় এই মিষ্টি হাসিটা থাকুক!"
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium pt-2 text-justify sm:text-center">
+                "জীবনের চাওয়া-পাওয়া তো সবারই বদলায়, কিন্তু কারও জন্য শুভকামনা কখনো বদলে যায় না। এই ওয়েবসাইটের কোড বা শর্টকাটগুলো হয়তো পরীক্ষার প্রস্তুতি ও সাফল্যের সিঁড়ি বেয়ে সামনে এগিয়ে যাওয়ার জন্য, কিন্তু আমার জীবনের সবচেয়ে সুন্দর পাওয়া হলো তোমাকেও এমনভাবে চেনা। তোমার প্রতিটা স্বপ্ন পূরণ হোক, প্রতিটি দিন যেন হাসিমুখে কাটে—আজ এবং আগামীতেও তোমার যেকোনো অর্জনে আমার মন থেকে সবসময় তোমার জন্য অনেক দোয়া ও শুভকামনা থাকবে।"
               </p>
 
-              <div className="pt-2 flex flex-wrap items-center justify-center gap-3 text-xs text-emerald-400 font-semibold">
+              <div className="pt-2 flex flex-wrap items-center justify-center gap-3 text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
                 <span>✨ My Inspiration</span>
                 <span>•</span>
                 <span>✨ My Forever Support</span>

@@ -132,22 +132,22 @@ const MockExam = () => {
   };
 
   return (
-    <div className="space-y-6 max-w-4xl w-full mx-auto py-2">
+    <div className="space-y-6 max-w-4xl w-full mx-auto py-2 text-slate-900 dark:text-slate-100">
       {!examStarted ? (
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 text-center space-y-6">
-          <div className="w-16 h-16 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-3xl flex items-center justify-center mx-auto text-2xl">
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 text-center space-y-6 shadow-sm transition-colors">
+          <div className="w-16 h-16 bg-emerald-500/15 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 rounded-3xl flex items-center justify-center mx-auto text-2xl">
             <FiAward />
           </div>
 
           <div className="space-y-2 max-w-lg mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-black text-white">ভার্সিটি এডমিশন সাবজেক্ট ওয়াইজ মক টেস্ট</h2>
-            <p className="text-slate-400 text-xs sm:text-sm">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">ভার্সিটি এডমিশন সাবজেক্ট ওয়াইজ মক টেস্ট</h2>
+            <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm">
               তোমার পছন্দের সাবজেক্ট সিলেক্ট করো। প্রতিবার সম্পূর্ণ নতুন ও এলোমেলো (Shuffled) প্রশ্ন ও অপশনে পরীক্ষা দাও।
             </p>
           </div>
 
           <div className="max-w-xl mx-auto space-y-3">
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block text-left">
+            <label className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider block text-left">
               পরীক্ষার সাবজেক্ট বেছে নাও:
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -157,31 +157,31 @@ const MockExam = () => {
                   onClick={() => setSelectedSubjectKey(key)}
                   className={`p-4 rounded-2xl border text-left font-bold text-sm transition-all flex items-center gap-3 cursor-pointer ${
                     selectedSubjectKey === key 
-                      ? 'bg-emerald-500/10 border-emerald-500 text-emerald-300 shadow-lg shadow-emerald-500/10' 
-                      : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:bg-slate-800'
+                      ? 'bg-emerald-50 dark:bg-emerald-500/10 border-emerald-500 text-emerald-800 dark:text-emerald-300 shadow-md shadow-emerald-500/10' 
+                      : 'bg-slate-50 dark:bg-slate-950/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
                   }`}
                 >
                   <span className="text-2xl">{val.icon}</span>
                   <div>
-                    <div className="text-white text-sm">{val.name}</div>
-                    <div className="text-[10px] text-slate-400 font-normal mt-0.5">মক টেস্ট ও প্র্যাকটিস</div>
+                    <div className="text-slate-900 dark:text-white text-sm">{val.name}</div>
+                    <div className="text-[10px] text-slate-500 dark:text-slate-400 font-normal mt-0.5">মক টেস্ট ও প্র্যাকটিস</div>
                   </div>
                 </button>
               ))}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl mx-auto text-left text-xs text-slate-300">
-            <div className="p-3 bg-slate-950/60 border border-slate-800 rounded-2xl">
-              <span className="text-emerald-400 font-bold block mb-1">⏱️ সময়সীমা</span>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl mx-auto text-left text-xs text-slate-700 dark:text-slate-300">
+            <div className="p-3 bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 rounded-2xl">
+              <span className="text-emerald-600 dark:text-emerald-400 font-bold block mb-1">⏱️ সময়সীমা</span>
               প্রতি প্রশ্নে ১ মিনিট (DU স্ট্যান্ডার্ড)
             </div>
-            <div className="p-3 bg-slate-950/60 border border-slate-800 rounded-2xl">
-              <span className="text-emerald-400 font-bold block mb-1">🎯 নেগেটিভ মার্কিং</span>
+            <div className="p-3 bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 rounded-2xl">
+              <span className="text-emerald-600 dark:text-emerald-400 font-bold block mb-1">🎯 নেগেটিভ মার্কিং</span>
               ভুল উত্তরে -০.২৫ কাটা যাবে
             </div>
-            <div className="p-3 bg-slate-950/60 border border-slate-800 rounded-2xl">
-              <span className="text-emerald-400 font-bold block mb-1">🔀 রিয়েল র‍্যান্ডম</span>
+            <div className="p-3 bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 rounded-2xl">
+              <span className="text-emerald-600 dark:text-emerald-400 font-bold block mb-1">🔀 রিয়েল র‍্যান্ডম</span>
               প্রশ্ন ও ৪টি অপশন প্রতিবার পরিবর্তনশীল
             </div>
           </div>
@@ -195,7 +195,7 @@ const MockExam = () => {
             </button>
             <button
               onClick={() => startNewExam(selectedSubjectKey, 50)}
-              className="px-6 py-3 bg-slate-800 hover:bg-slate-750 border border-slate-700 text-white font-bold rounded-2xl text-sm transition-all cursor-pointer"
+              className="px-6 py-3 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-750 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white font-bold rounded-2xl text-sm transition-all cursor-pointer"
             >
               ৫০ নম্বরের মেগা টেস্ট
             </button>
@@ -203,26 +203,26 @@ const MockExam = () => {
         </div>
       ) : (
         <div className="space-y-6">
-          <div className="sticky top-4 z-40 bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-2xl p-4 shadow-xl flex justify-between items-center">
+          <div className="sticky top-4 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-xl flex justify-between items-center transition-colors">
             <div className="flex items-center gap-3">
-              <Link to="/science" className="text-slate-400 hover:text-white text-xs font-bold flex items-center gap-1">
+              <Link to="/science" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-xs font-bold flex items-center gap-1">
                 <FiArrowLeft /> এক্সিট
               </Link>
-              <span className="text-xs font-bold text-slate-300 border-l border-slate-800 pl-3">
-                সাবজেক্ট: <strong className="text-emerald-400">{subjectsConfig[selectedSubjectKey]?.name}</strong>
+              <span className="text-xs font-bold text-slate-700 dark:text-slate-300 border-l border-slate-200 dark:border-slate-800 pl-3">
+                সাবজেক্ট: <strong className="text-emerald-600 dark:text-emerald-400">{subjectsConfig[selectedSubjectKey]?.name}</strong>
               </span>
             </div>
 
             <div className="flex items-center gap-3">
-              <span className="text-xs font-bold text-slate-300">
-                উত্তর: <strong className="text-emerald-400">{Object.keys(userAnswers).length}</strong>/{examQuestions.length}
+              <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                উত্তর: <strong className="text-emerald-600 dark:text-emerald-400">{Object.keys(userAnswers).length}</strong>/{examQuestions.length}
               </span>
 
               {!isSubmitted && (
                 <div className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold border ${
                   timeLeft < 300 
-                    ? 'bg-red-950/60 border-red-500/40 text-red-400 animate-pulse' 
-                    : 'bg-slate-950 border-slate-800 text-emerald-400'
+                    ? 'bg-red-50 dark:bg-red-950/60 border-red-500/40 text-red-600 dark:text-red-400 animate-pulse' 
+                    : 'bg-slate-100 dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-emerald-600 dark:text-emerald-400'
                 }`}>
                   <FiClock /> {formatTime(timeLeft)}
                 </div>
@@ -247,11 +247,11 @@ const MockExam = () => {
           </div>
 
           {isSubmitted && scoreData && (
-            <div className="bg-gradient-to-r from-emerald-950 via-slate-900 to-slate-900 border border-emerald-500/30 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl">
+            <div className="bg-gradient-to-r from-emerald-50 via-slate-100 to-slate-100 dark:from-emerald-950 dark:via-slate-900 dark:to-slate-900 border border-emerald-500/30 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl transition-colors">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                  <span className="text-xs text-emerald-400 font-bold uppercase tracking-wider">টেস্ট সম্পন্ন হয়েছে</span>
-                  <h3 className="text-2xl sm:text-3xl font-black text-white mt-0.5">মক টেস্ট রেজাল্ট শিট</h3>
+                  <span className="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase tracking-wider">টেস্ট সম্পন্ন হয়েছে</span>
+                  <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-0.5">মক টেস্ট রেজাল্ট শিট</h3>
                 </div>
                 <div className="bg-emerald-500 text-slate-950 px-5 py-2.5 rounded-2xl text-center shadow-lg shadow-emerald-500/20">
                   <span className="text-[10px] uppercase font-bold block">প্রাপ্ত নম্বর</span>
@@ -261,17 +261,17 @@ const MockExam = () => {
               </div>
 
               <div className="grid grid-cols-3 gap-3">
-                <div className="p-3.5 bg-slate-950/60 border border-emerald-500/20 rounded-2xl text-center">
-                  <span className="text-xs text-emerald-400 font-semibold block">সঠিক (+১.০০)</span>
-                  <strong className="text-xl font-black text-emerald-400">{scoreData.correct}টি</strong>
+                <div className="p-3.5 bg-white dark:bg-slate-950/60 border border-emerald-500/20 rounded-2xl text-center shadow-sm">
+                  <span className="text-xs text-emerald-700 dark:text-emerald-400 font-semibold block">সঠিক (+১.০০)</span>
+                  <strong className="text-xl font-black text-emerald-700 dark:text-emerald-400">{scoreData.correct}টি</strong>
                 </div>
-                <div className="p-3.5 bg-slate-950/60 border border-red-500/20 rounded-2xl text-center">
-                  <span className="text-xs text-red-400 font-semibold block">ভুল (-০.২৫)</span>
-                  <strong className="text-xl font-black text-red-400">{scoreData.wrong}টি</strong>
+                <div className="p-3.5 bg-white dark:bg-slate-950/60 border border-red-500/20 rounded-2xl text-center shadow-sm">
+                  <span className="text-xs text-red-600 dark:text-red-400 font-semibold block">ভুল (-০.২৫)</span>
+                  <strong className="text-xl font-black text-red-600 dark:text-red-400">{scoreData.wrong}টি</strong>
                 </div>
-                <div className="p-3.5 bg-slate-950/60 border border-slate-800 rounded-2xl text-center">
-                  <span className="text-xs text-slate-400 font-semibold block">উত্তর দাওনি</span>
-                  <strong className="text-xl font-black text-slate-300">{scoreData.unattempted}টি</strong>
+                <div className="p-3.5 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 rounded-2xl text-center shadow-sm">
+                  <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold block">উত্তর দাওনি</span>
+                  <strong className="text-xl font-black text-slate-700 dark:text-slate-300">{scoreData.unattempted}টি</strong>
                 </div>
               </div>
             </div>
@@ -283,24 +283,24 @@ const MockExam = () => {
               const isAnswered = userChoice !== undefined;
 
               return (
-                <div key={q.uniqueExamId} className="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 space-y-4 shadow-sm">
+                <div key={q.uniqueExamId} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-7 space-y-4 shadow-sm transition-colors">
                   <div className="flex justify-between items-center text-xs">
-                    <span className="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg font-bold">
+                    <span className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2.5 py-1 rounded-lg font-bold">
                       প্রশ্ন {qIdx + 1}/{examQuestions.length}
                     </span>
 
                     {isSubmitted && (
                       <div>
                         {!isAnswered ? (
-                          <span className="text-slate-400 bg-slate-800/80 px-2.5 py-1 rounded-md text-[11px] font-bold">
+                          <span className="text-slate-500 bg-slate-100 dark:bg-slate-800/80 px-2.5 py-1 rounded-md text-[11px] font-bold">
                             উত্তর দাওনি
                           </span>
                         ) : userChoice === q.correctAnswer ? (
-                          <span className="text-emerald-300 bg-emerald-950 border border-emerald-500/30 px-2.5 py-1 rounded-md text-[11px] font-bold flex items-center gap-1">
+                          <span className="text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950 border border-emerald-500/30 px-2.5 py-1 rounded-md text-[11px] font-bold flex items-center gap-1">
                             <FiCheckCircle /> সঠিক (+১.০০)
                           </span>
                         ) : (
-                          <span className="text-red-300 bg-red-950 border border-red-500/30 px-2.5 py-1 rounded-md text-[11px] font-bold flex items-center gap-1">
+                          <span className="text-red-800 dark:text-red-300 bg-red-50 dark:bg-red-950 border border-red-500/30 px-2.5 py-1 rounded-md text-[11px] font-bold flex items-center gap-1">
                             <FiXCircle /> ভুল উত্তর (-০.২৫)
                           </span>
                         )}
@@ -308,25 +308,25 @@ const MockExam = () => {
                     )}
                   </div>
 
-                  <h4 className="text-base sm:text-lg font-bold text-white leading-relaxed">
+                  <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-relaxed">
                     {q.question}
                   </h4>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {q.options.map((opt, oIdx) => {
-                      let btnStyle = "border-slate-800 bg-slate-950/60 hover:bg-slate-850 text-slate-300";
+                      let btnStyle = "border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 hover:bg-slate-100 dark:hover:bg-slate-850 text-slate-700 dark:text-slate-300";
 
                       if (!isSubmitted) {
                         if (userChoice === oIdx) {
-                          btnStyle = "border-emerald-500 bg-emerald-950/80 text-emerald-200 font-bold ring-1 ring-emerald-500/40";
+                          btnStyle = "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/80 text-emerald-900 dark:text-emerald-200 font-bold ring-1 ring-emerald-500/40";
                         }
                       } else {
                         if (oIdx === q.correctAnswer) {
-                          btnStyle = "border-emerald-500 bg-emerald-950/80 text-emerald-200 font-bold ring-1 ring-emerald-500/50";
+                          btnStyle = "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/80 text-emerald-900 dark:text-emerald-200 font-bold ring-1 ring-emerald-500/50";
                         } else if (userChoice === oIdx) {
-                          btnStyle = "border-red-500 bg-red-950/80 text-red-200 font-bold";
+                          btnStyle = "border-red-500 bg-red-50 dark:bg-red-950/80 text-red-900 dark:text-red-200 font-bold";
                         } else {
-                          btnStyle = "border-slate-800 bg-slate-950/20 text-slate-600 opacity-40";
+                          btnStyle = "border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/20 text-slate-400 opacity-40";
                         }
                       }
 
@@ -338,28 +338,28 @@ const MockExam = () => {
                           className={`p-3.5 rounded-2xl border text-left text-xs sm:text-sm transition-all flex items-center justify-between cursor-pointer ${btnStyle}`}
                         >
                           <span>
-                            <strong className="mr-2 text-slate-400">{String.fromCharCode(65 + oIdx)}.</strong>
+                            <strong className="mr-2 text-slate-500">{String.fromCharCode(65 + oIdx)}.</strong>
                             {opt}
                           </span>
-                          {isSubmitted && oIdx === q.correctAnswer && <FiCheckCircle className="text-emerald-400 text-base" />}
+                          {isSubmitted && oIdx === q.correctAnswer && <FiCheckCircle className="text-emerald-600 dark:text-emerald-400 text-base" />}
                         </button>
                       );
                     })}
                   </div>
 
                   {isSubmitted && (
-                    <div className="p-4 bg-slate-950/70 border border-slate-800 rounded-2xl space-y-2 text-xs text-slate-300">
+                    <div className="p-4 bg-slate-100 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 rounded-2xl space-y-2 text-xs text-slate-700 dark:text-slate-300">
                       {q.hack && (
-                        <div className="flex items-start gap-2 text-emerald-300">
-                          <span className="bg-emerald-500/10 text-emerald-400 font-bold px-2 py-0.5 rounded text-[10px] shrink-0">
+                        <div className="flex items-start gap-2 text-emerald-700 dark:text-emerald-300">
+                          <span className="bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-bold px-2 py-0.5 rounded text-[10px] shrink-0">
                             টেকনিক
                           </span>
                           <span>{q.hack}</span>
                         </div>
                       )}
                       {q.explanation && (
-                        <p className="text-slate-400 pt-1 border-t border-slate-850 leading-relaxed">
-                          <strong className="text-slate-300">ব্যাখ্যা:</strong> {q.explanation}
+                        <p className="text-slate-600 dark:text-slate-400 pt-1 border-t border-slate-200 dark:border-slate-850 leading-relaxed">
+                          <strong className="text-slate-800 dark:text-slate-300">ব্যাখ্যা:</strong> {q.explanation}
                         </p>
                       )}
                     </div>
