@@ -7,5 +7,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: "/", // Vercel-এর জন্য অবশ্যই এটি "/" থাকতে হবে
+  base: "/admission-crack/", // গিটহ্যাব পেজের জন্য এটি জরুরি
 })
