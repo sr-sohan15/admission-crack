@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { admissionData } from '../Data/admissionData';
 import { biologyData } from '../Data/Science/biology/biologyData';
-import { physicsData } from '../Data/Science/physicsData';
-import { chemistryData } from '../Data/Science/chemistryData';
-import { mathData } from '../Data/Science/mathData';
+import { physicsData } from '../Data/Science/physics/physicsData';
+import { chemistryData } from '../Data/Science/Chemistry/chemistryData';
+import { mathData } from '../Data/Science/Higher Mathematics/mathData';
 import { 
   FiCheckCircle, FiAlertTriangle, FiArrowLeft, FiBookmark, 
   FiZap, FiXCircle, FiLayers, FiBookOpen, FiArrowRight 
@@ -26,7 +26,7 @@ const SubjectHacks = () => {
   const currentSubId = (subjectId || streamId)?.toLowerCase();
   let currentSubject = null;
 
-  // টেক্সট থেকে অপ্রয়োজনীয় প্রিফিক্স রিমুভ করার ফাংশন
+  // টেক্সট থেকে অপ্রয়োজনীয় প্রিফিক্স রিমুভ করার ফাংশন
   const cleanPrefix = (text) => {
     if (!text) return '';
     return text
@@ -60,52 +60,78 @@ const SubjectHacks = () => {
       ]
     };
   } else if (currentSubId === 'physics') {
-    const rawChapters = physicsData || [];
+    const paper1 = physicsData?.paper1Chapters || physicsData?.firstPaper || [];
+    const paper2 = physicsData?.paper2Chapters || physicsData?.secondPaper || [];
+    const rawChapters = selectedPaper === '1st' ? paper1 : paper2;
+
     currentSubject = {
-      name: "Physics (পদার্থবিজ্ঞান)",
-      hasPapers: false,
-      totalQuestionsCount: rawChapters.flatMap(c => c.questions || []).length,
+      name: physicsData?.name || "Physics (পদার্থবিজ্ঞান)",
+      hasPapers: physicsData?.hasPapers ?? true,
+      botanyCount: paper1.length, 
+      zoologyCount: paper2.length, 
+      totalQuestionsCount: [...paper1, ...paper2].flatMap(c => c.questions || []).length,
       mustReadChapters: rawChapters.map(ch => ({
-        id: ch.id || ch.title,
-        title: ch.title,
-        guarantee: ch.weightage || "১-২ নম্বর",
-        shortcuts: ch.shortcuts || "সূত্র ও টেকনিক",
+        id: ch.id,
+        paper: ch.paper,
+        paperType: ch.paperType || (ch.paper?.includes('১ম') ? '1st' : '2nd'),
+        chapterNo: ch.chapterNo,
+        title: `${ch.paper} - অধ্যায় ${ch.chapterNo}: ${ch.title}`,
+        guarantee: ch.weightage || "১০০% নিশ্চিত টাইপ",
+        shortcuts: ch.shortcuts || "শর্টকাট টেকনিক",
         count: `${ch.questions?.length || 0}টি প্রশ্ন`,
         questions: ch.questions || []
       })),
-      skipChapters: ["অতিরিক্ত বড় প্রমাণ ও ডেরিভেশন"]
+      skipChapters: physicsData?.skipChapters || ["অতিরিক্ত বড় প্রমাণ ও ডেরিভেশন"]
     };
   } else if (currentSubId === 'chemistry') {
-    const rawChapters = chemistryData || [];
+    const paper1 = chemistryData?.firstPaper || chemistryData?.paper1Chapters || [];
+    const paper2 = chemistryData?.secondPaper || chemistryData?.paper2Chapters || [];
+    const rawChapters = selectedPaper === '1st' ? paper1 : paper2;
+    const allChapters = [...paper1, ...paper2];
+
     currentSubject = {
-      name: "Chemistry (রসায়ন)",
-      hasPapers: false,
-      totalQuestionsCount: rawChapters.flatMap(c => c.questions || []).length,
+      name: chemistryData?.name || "Chemistry (রসায়ন)",
+      hasPapers: paper1.length > 0 || paper2.length > 0,
+      botanyCount: paper1.length,
+      zoologyCount: paper2.length,
+      totalQuestionsCount: allChapters.flatMap(c => c.questions || []).length,
       mustReadChapters: rawChapters.map(ch => ({
         id: ch.id || ch.title,
+        paper: ch.paper || (selectedPaper === '1st' ? '১ম পত্র' : '২য় পত্র'),
+        paperType: ch.paperType || selectedPaper,
+        chapterNo: ch.chapterNo || 1,
         title: ch.title,
         guarantee: ch.weightage || "১-২ নম্বর",
         shortcuts: ch.shortcuts || "ছন্দ ও ট্রিকস",
         count: `${ch.questions?.length || 0}টি প্রশ্ন`,
         questions: ch.questions || []
       })),
-      skipChapters: ["অপ্রয়োজনীয় দীর্ঘ বাণিজ্যিক প্রস্তুতি ও বর্ণনা"]
+      skipChapters: chemistryData?.skipChapters || ["অপ্রয়োজনীয় দীর্ঘ বাণিজ্যিক প্রস্তুতি ও বর্ণনা"]
     };
-  } else if (currentSubId === 'math' || currentSubId === 'highermath') {
-    const rawChapters = mathData || [];
+  } else if (currentSubId === 'math' || currentSubId === 'highermath' || currentSubId === 'higher mathematics') {
+    const paper1 = mathData?.firstPaper || mathData?.paper1Chapters || [];
+    const paper2 = mathData?.secondPaper || mathData?.paper2Chapters || [];
+    const rawChapters = selectedPaper === '1st' ? paper1 : paper2;
+    const allChapters = [...paper1, ...paper2];
+
     currentSubject = {
-      name: "Higher Math (উচ্চতর গণিত)",
-      hasPapers: false,
-      totalQuestionsCount: rawChapters.flatMap(c => c.questions || []).length,
+      name: mathData?.name || "Higher Math (উচ্চতর গণিত)",
+      hasPapers: paper1.length > 0 || paper2.length > 0,
+      botanyCount: paper1.length,
+      zoologyCount: paper2.length,
+      totalQuestionsCount: allChapters.flatMap(c => c.questions || []).length,
       mustReadChapters: rawChapters.map(ch => ({
         id: ch.id || ch.title,
+        paper: ch.paper || (selectedPaper === '1st' ? '১ম পত্র' : '২য় পত্র'),
+        paperType: ch.paperType || selectedPaper,
+        chapterNo: ch.chapterNo || 1,
         title: ch.title,
         guarantee: ch.weightage || "১-২ নম্বর",
         shortcuts: ch.shortcuts || "ক্যালকুলেটর টেকনিক",
         count: `${ch.questions?.length || 0}টি প্রশ্ন`,
         questions: ch.questions || []
       })),
-      skipChapters: ["বড় থিওরেম ও ৩ পৃষ্ঠার সমীকরণ প্রমাণ"]
+      skipChapters: mathData?.skipChapters || ["বড় থিওরেম ও ৩ পৃষ্ঠার সমীকরণ প্রমাণ"]
     };
   } else {
     const currentStream = admissionData[streamId?.toLowerCase()];
@@ -125,9 +151,9 @@ const SubjectHacks = () => {
   if (!currentSubject) {
     return (
       <div className="text-center py-20">
-        <h2 className="text-xl font-bold text-white">বিষয় পাওয়া যায়নি!</h2>
+        <h2 className="text-xl font-bold text-white">বিষয় পাওয়া যায়নি!</h2>
         <Link to="/science" className="btn bg-emerald-500 text-slate-950 mt-4 rounded-xl font-bold">
-          সায়েন্স হোমে ফিরুন
+          সায়েন্স হোমে ফিরুন
         </Link>
       </div>
     );
@@ -144,7 +170,7 @@ const SubjectHacks = () => {
 
   if (activeChapterId === 'all_global') {
     displayedQuestions = currentSubject.mustReadChapters?.flatMap(ch => ch.questions || []) || currentSubject.questions || [];
-    pageTitle = `${currentSubject.name} - সকল অধ্যায়ের প্রশ্ন ও সমাধান একত্রে`;
+    pageTitle = `${currentSubject.name} - সকল অধ্যায়ের প্রশ্ন ও সমাধান একত্রে`;
   } else if (activeChapterId === 'all_paper') {
     displayedQuestions = filteredChapters.flatMap(ch => ch.questions || []);
     pageTitle = `${selectedPaper === '1st' ? '১ম পত্রের' : '২য় পত্রের'} সকল প্রশ্ন ও সমাধান একত্রে`;
@@ -157,10 +183,10 @@ const SubjectHacks = () => {
     let updated;
     if (bookmarks.includes(qId)) {
       updated = bookmarks.filter(id => id !== qId);
-      toast.info('রিভিশন বুকমার্ক থেকে সরানো হয়েছে');
+      toast.info('রিভিশন বুকমার্ক থেকে সরানো হয়েছে');
     } else {
       updated = [...bookmarks, qId];
-      toast.success('রিভিশনের জন্য সেভ করা হয়েছে!');
+      toast.success('রিভিশনের জন্য সেভ করা হয়েছে!');
     }
     setBookmarks(updated);
     localStorage.setItem('chancehack-bookmarks', JSON.stringify(updated));
@@ -297,7 +323,7 @@ const SubjectHacks = () => {
         /* অধ্যায় তালিকা ভিউ */
         <div className="space-y-6">
           <Link to={backLink} className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-400 hover:text-emerald-400 transition-colors">
-            <FiArrowLeft /> বিষয় তালিকায় ফিরে যান
+            <FiArrowLeft /> বিষয় তালিকায় ফিরে যান
           </Link>
 
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-8 shadow-sm space-y-4">
@@ -322,7 +348,7 @@ const SubjectHacks = () => {
                       : 'bg-slate-950 border border-slate-800 text-slate-400 hover:border-slate-700'
                   }`}
                 >
-                  🌿 ১ম পত্র (উদ্ভিদবিজ্ঞান)
+                  🌿 ১ম পত্র
                   <span className={`text-[10px] px-1.5 py-0.5 rounded-md ${selectedPaper === '1st' ? 'bg-emerald-950 text-emerald-200' : 'bg-slate-800 text-slate-400'}`}>
                     {currentSubject.botanyCount}টি অধ্যায়
                   </span>
@@ -336,7 +362,7 @@ const SubjectHacks = () => {
                       : 'bg-slate-950 border border-slate-800 text-slate-400 hover:border-slate-700'
                   }`}
                 >
-                  🐾 ২য় পত্র (প্রাণীবিজ্ঞান)
+                  🐾 ২য় পত্র
                   <span className={`text-[10px] px-1.5 py-0.5 rounded-md ${selectedPaper === '2nd' ? 'bg-emerald-950 text-emerald-200' : 'bg-slate-800 text-slate-400'}`}>
                     {currentSubject.zoologyCount}টি অধ্যায়
                   </span>
@@ -350,28 +376,30 @@ const SubjectHacks = () => {
               <h3 className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
                 <FiZap className="text-emerald-400 text-base" /> 
                 {currentSubject.hasPapers 
-                  ? (selectedPaper === '1st' ? '১ম পত্র (উদ্ভিদবিজ্ঞান)' : '২য় পত্র (প্রাণীবিজ্ঞান)') 
+                  ? (selectedPaper === '1st' ? '১ম পত্রের' : '২য় পত্রের') 
                   : 'সকল'} অধ্যায় ({filteredChapters.length}টি)
               </h3>
 
               <div className="space-y-2.5 max-h-[500px] overflow-y-auto pr-1">
-                <div
-                  onClick={() => setActiveChapterId('all_paper')}
-                  className="p-4 rounded-2xl border border-slate-800 bg-slate-900/90 hover:border-emerald-500/60 hover:bg-emerald-950/20 transition-all cursor-pointer flex justify-between items-center group"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
-                      <FiLayers />
+                {currentSubject.hasPapers && (
+                  <div
+                    onClick={() => setActiveChapterId('all_paper')}
+                    className="p-4 rounded-2xl border border-slate-800 bg-slate-900/90 hover:border-emerald-500/60 hover:bg-emerald-950/20 transition-all cursor-pointer flex justify-between items-center group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
+                        <FiLayers />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-xs sm:text-sm text-white group-hover:text-emerald-300">
+                          {selectedPaper === '1st' ? '১ম পত্রের সব প্রশ্ন একসাথে' : '২য় পত্রের সব প্রশ্ন একসাথে'} ({filteredChapters.flatMap(c => c.questions).length}টি প্রশ্ন)
+                        </h4>
+                        <p className="text-[11px] text-slate-400">ধারাবাহিক প্রশ্ন ও ব্যাখ্যা স্টাডি</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-bold text-xs sm:text-sm text-white group-hover:text-emerald-300">
-                        {selectedPaper === '1st' ? '১ম পত্রের সব প্রশ্ন একসাথে' : '২য় পত্রের সব প্রশ্ন একসাথে'} ({filteredChapters.flatMap(c => c.questions).length}টি প্রশ্ন)
-                      </h4>
-                      <p className="text-[11px] text-slate-400">ধারাবাহিক প্রশ্ন ও ব্যাখ্যা স্টাডি</p>
-                    </div>
+                    <FiArrowRight className="text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
                   </div>
-                  <FiArrowRight className="text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
-                </div>
+                )}
 
                 {filteredChapters.map((ch, idx) => (
                   <div
@@ -402,7 +430,7 @@ const SubjectHacks = () => {
 
             <div className="space-y-3">
               <h3 className="text-xs font-bold text-red-400 uppercase tracking-wider flex items-center gap-2">
-                <FiXCircle className="text-red-400 text-base" /> একদম পড়বে না (১০০% বাদ / Skip)
+                <FiXCircle className="text-red-400 text-base" /> একদম পড়বে না (১০০% বাদ / Skip)
               </h3>
               <div className="space-y-2.5">
                 {currentSubject.skipChapters?.map((skip, idx) => (

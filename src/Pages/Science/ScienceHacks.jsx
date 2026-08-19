@@ -10,43 +10,40 @@ const ScienceHacks = () => {
   if (!currentSubject) {
     return (
       <div className="text-center py-16">
-        <h2 className="text-lg font-bold">বিষয় পাওয়া যায়নি!</h2>
-        <Link to="/science" className="btn bg-emerald-500 text-slate-950 mt-4 rounded-xl font-bold">সায়েন্স হোমে ফিরুন</Link>
+        <h2 className="text-lg font-bold">বিষয় পাওয়া যায়নি!</h2>
+        <Link to="/science" className="btn bg-emerald-500 text-slate-950 mt-4 rounded-xl font-bold">সায়েন্স হোমে ফিরুন</Link>
       </div>
     );
   }
 
-  // বোটানি ও জুওলজি আলাদা ফিল্টার
   const botanyChapters = currentSubject.chapters?.filter(c => c.paper.includes('১ম পত্র')) || [];
-  const zoologyChapters = currentSubject.chapters?.filter(c => c.paper.includes('২য় পত্র')) || [];
+  const zoologyChapters = currentSubject.chapters?.filter(c => c.paper.includes('২য় পত্র')) || [];
 
   return (
     <div className="space-y-8 max-w-5xl w-full mx-auto py-2">
       <Link to="/science" className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-400 hover:text-emerald-400 transition-colors">
-        <FiArrowLeft /> সায়েন্স বিষয় তালিকায় ফিরে যান
+        <FiArrowLeft /> সায়েন্স বিষয় তালিকায় ফিরে যান
       </Link>
 
-      {/* Subject Header Banner */}
       <div className="bg-gradient-to-r from-emerald-950 via-slate-900 to-slate-900 border border-emerald-500/30 rounded-3xl p-6 sm:p-8 space-y-2">
         <div className="flex justify-between items-center">
           <span className="bg-emerald-500/20 text-emerald-400 text-xs px-3 py-1 rounded-full font-bold">
             DU A & GST KA Focus
           </span>
           <span className="text-xs text-amber-400 font-bold flex items-center gap-1">
-            <FiStar /> স্টার অনুযায়ী সাজানো
+            <FiStar /> স্টার অনুযায়ী সাজানো
           </span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-black text-white">{currentSubject.name}</h2>
         <p className="text-slate-300 text-xs sm:text-sm">{currentSubject.subtitle}</p>
       </div>
 
-      {/* Botany Section */}
       <div className="space-y-4">
         <div className="flex items-center justify-between border-b border-slate-800 pb-2">
           <h3 className="text-sm sm:text-base font-extrabold text-emerald-400 flex items-center gap-2">
-            🌿 উদ্ভিদবিজ্ঞান (১ম পত্র - মোস্ট ইম্পর্ট্যান্ট অধ্যায়)
+            🌿 উদ্ভিদবিজ্ঞান (১ম পত্র - মোস্ট ইম্পর্ট্যান্ট অধ্যায়)
           </h3>
-          <span className="text-xs text-slate-400">{botanyChapters.length}টি অধ্যায়</span>
+          <span className="text-xs text-slate-400">{botanyChapters.length}টি অধ্যায়</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -90,13 +87,12 @@ const ScienceHacks = () => {
         </div>
       </div>
 
-      {/* Zoology Section */}
       <div className="space-y-4 pt-4">
         <div className="flex items-center justify-between border-b border-slate-800 pb-2">
           <h3 className="text-sm sm:text-base font-extrabold text-cyan-400 flex items-center gap-2">
-            🧬 প্রাণীবিজ্ঞান (২য় পত্র - মোস্ট ইম্পর্ট্যান্ট অধ্যায়)
+            🧬 প্রাণীবিজ্ঞান (২য় পত্র - মোস্ট ইম্পর্ট্যান্ট অধ্যায়)
           </h3>
-          <span className="text-xs text-slate-400">{zoologyChapters.length}টি অধ্যায়</span>
+          <span className="text-xs text-slate-400">{zoologyChapters.length}টি অধ্যায়</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

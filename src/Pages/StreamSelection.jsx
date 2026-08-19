@@ -1,74 +1,99 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { admissionData } from '../Data/admissionData';
+import { scienceData } from '../Data/Science/scienceDatda';
 import { FiArrowRight, FiBookOpen, FiAlertCircle, FiCheckCircle } from 'react-icons/fi';
 
 const StreamSelection = () => {
   const { streamId } = useParams();
-  const currentStream = admissionData[streamId?.toLowerCase()];
 
-  if (!currentStream) {
+  // যদি সাইন্স ইউনিট হয়, তবে আমাদের নতুন scienceData থেকে ৪টি সাবজেক্ট ডাইনামিক দেখাবো
+  if (streamId?.toLowerCase() !== 'science') {
     return (
-      <div className="text-center py-16 sm:py-24">
-        <h2 className="text-lg sm:text-xl font-bold">স্ট্রিম পাওয়া যায়নি!</h2>
-        <Link to="/" className="btn bg-emerald-500 text-slate-950 mt-4 rounded-xl font-bold">হোমে ফিরে যান</Link>
+      <div className="text-center py-16 sm:py-24 text-white">
+        <h2 className="text-lg sm:text-xl font-bold">স্ট্রিম পাওয়া যায়নি অথবা এটি এখনো উন্মুক্ত হয়নি!</h2>
+        <Link to="/" className="btn bg-emerald-500 text-slate-950 mt-4 rounded-xl font-bold px-6 py-2">হোমে ফিরে যান</Link>
       </div>
     );
   }
+
+  // ৪টি মূল সাবজেক্টের কনফিগারেশন ও স্ট্যাটাস
+  const scienceSubjects = [
+    {
+      id: 'physics',
+      name: 'পদার্থবিজ্ঞান (Physics)',
+      status: 'compulsory',
+      statusText: 'বাধ্যতামূলক (Compulsory)',
+      description: '১০০% কমন টাইপ, সূত্র ও ৫-সেকেন্ড শর্টকাট হ্যাকস',
+      chaptersCount: (scienceData.physics?.firstPaper?.length || 0) + (scienceData.physics?.secondPaper?.length || 0)
+    },
+    {
+      id: 'chemistry',
+      name: 'রসায়ন (Chemistry)',
+      status: 'compulsory',
+      statusText: 'বাধ্যতামূলক (Compulsory)',
+      description: 'জৈব রসায়ন, বিক্রিয়া ও মৌলের পর্যাবৃত্ত ধর্ম ট্রিকস',
+      chaptersCount: (scienceData.chemistry?.firstPaper?.length || 0) + (scienceData.chemistry?.secondPaper?.length || 0)
+    },
+    {
+      id: 'higherMath',
+      name: 'উচ্চতর গণিত (Higher Math)',
+      status: 'choice',
+      statusText: 'বাধ্যতামূলক / ৪র্থ বিষয়',
+      description: 'কণিক, স্থিতিবিদ্যা, ক্যালকুলাস ও ম্যাট্রিক্স হ্যাকস',
+      chaptersCount: (scienceData.higherMath?.firstPaper?.length || 0) + (scienceData.higherMath?.secondPaper?.length || 0)
+    },
+    {
+      id: 'biology',
+      name: 'জীববিজ্ঞান (Biology)',
+      status: 'choice',
+      statusText: 'বাধ্যতামূলক / ৪র্থ বিষয়',
+      description: 'উদ্ভিদবিজ্ঞান ও প্রাণীবিজ্ঞানের মোস্ট রিপিটেড এমসিকিউ',
+      chaptersCount: (scienceData.biology?.botany?.length || 0) + (scienceData.biology?.zoology?.length || 0)
+    }
+  ];
 
   return (
     <div className="space-y-6 max-w-5xl mx-auto py-2">
       {/* Header Banner */}
       <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-8 space-y-2">
-        <h2 className="text-xl sm:text-3xl font-extrabold text-white">{currentStream.title}</h2>
-        <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">{currentStream.subtitle}</p>
+        <span className="bg-emerald-500/20 text-emerald-300 text-xs px-3 py-1 rounded-full font-bold">
+          DU A Unit / GST KA
+        </span>
+        <h2 className="text-xl sm:text-3xl font-extrabold text-white mt-1">বিজ্ঞান ইউনিট (Science Stream)</h2>
+        <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          ভার্সিটি ভর্তি পরীক্ষার জন্য পদার্থবিজ্ঞান, রসায়ন, উচ্চতর গণিত ও বায়োলজির পূর্ণাঙ্গ শর্টকাট মিশন।
+        </p>
       </div>
 
       {/* Subject Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {currentStream.subjects.map(sub => {
-          const isSkippable = sub.status === 'skippable';
-          const isCompulsory = sub.status === 'compulsory';
+        {scienceSubjects.map(sub => {
+          const isSkippable = sub.status === 'choice';
 
           return (
             <Link
               key={sub.id}
-              to={`/stream/${streamId}/subject/${sub.id}`}
-              className={`p-5 sm:p-6 rounded-3xl border transition-all flex flex-col justify-between gap-4 group ${
-                isSkippable 
-                  ? 'bg-red-950/20 border-red-500/40 hover:border-red-500' 
-                  : 'bg-slate-900/70 border-slate-800 hover:border-emerald-500/50'
-              }`}
+              to={`/science/subject/${sub.id}`}
+              className="bg-slate-900/70 border border-slate-800 hover:border-emerald-500/50 p-5 sm:p-6 rounded-3xl transition-all flex flex-col justify-between gap-4 group"
             >
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 ${
-                    isSkippable 
-                      ? 'bg-red-500/20 text-red-400 border border-red-500/30' 
-                      : isCompulsory 
-                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' 
-                        : 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30'
-                  }`}>
-                    {isSkippable ? <FiAlertCircle /> : <FiCheckCircle />}
-                    {sub.statusText}
+                  <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    <FiCheckCircle /> {sub.statusText}
                   </span>
-                  <span className="text-xs text-slate-400 font-semibold">{sub.mustReadChapters.length}টি অধ্যায়</span>
+                  <span className="text-xs text-slate-400 font-semibold">{sub.chaptersCount}টি অধ্যায় উপলব্ধ</span>
                 </div>
 
-                <h3 className={`text-base sm:text-lg font-bold transition-colors flex items-center gap-2 ${
-                  isSkippable ? 'text-red-200 group-hover:text-red-300' : 'text-white group-hover:text-emerald-400'
-                }`}>
-                  <FiBookOpen className={isSkippable ? 'text-red-400' : 'text-emerald-400'} /> {sub.name}
+                <h3 className="text-base sm:text-lg font-bold transition-colors flex items-center gap-2 text-white group-hover:text-emerald-400">
+                  <FiBookOpen className="text-emerald-400" /> {sub.name}
                 </h3>
               </div>
 
               <div className="flex justify-between items-center pt-2 border-t border-slate-800/80 text-xs">
                 <span className="text-slate-400">
-                  {isSkippable ? 'Math/Bio কঠিন লাগলে এটি পড়ো' : '১০০% কমন টাইপ ও শর্টকাট হ্যাকস'}
+                  {sub.description}
                 </span>
-                <FiArrowRight className={`text-base transition-all group-hover:translate-x-1 ${
-                  isSkippable ? 'text-red-400' : 'text-emerald-400'
-                }`} />
+                <FiArrowRight className="text-base transition-all group-hover:translate-x-1 text-emerald-400" />
               </div>
             </Link>
           );

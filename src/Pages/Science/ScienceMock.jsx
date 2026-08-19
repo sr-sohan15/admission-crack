@@ -8,7 +8,6 @@ const ScienceMock = () => {
   const [userAnswers, setUserAnswers] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // সায়েন্সের মেইন ৪টি বিষয়ের প্রশ্ন ফিল্টার
   const scienceQuestions = scienceData.subjects
     .filter(s => s.status !== 'skippable')
     .flatMap(sub => sub.questions);
@@ -59,11 +58,11 @@ const ScienceMock = () => {
       {!examStarted ? (
         <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-12 text-center space-y-5">
           <span className="bg-emerald-500/20 text-emerald-400 text-xs px-3 py-1 rounded-full font-bold">
-            সায়েন্স স্পিড টেস্ট
+            সায়েন্স স্পিড টেস্ট
           </span>
           <h2 className="text-2xl sm:text-4xl font-black text-white">বিজ্ঞান ইউনিট লাইভ মক টেস্ট</h2>
           <p className="text-slate-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
-            নেগেটিভ মার্কিং (<span className="text-red-400 font-bold">০.২৫</span>) সহ দ্রুত সঠিক শর্টকাট প্রয়োগ করার ক্ষমতা যাচাই করুন।
+            নেগেটিভ মার্কিং (<span className="text-red-400 font-bold">০.২৫</span>) সহ দ্রুত সঠিক শর্টকাট প্রয়োগ করার ক্ষমতা যাচাই করুন।
           </p>
           <button
             onClick={handleStart}
@@ -74,11 +73,10 @@ const ScienceMock = () => {
         </div>
       ) : (
         <div className="space-y-6">
-          {/* Topbar */}
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex justify-between items-center sticky top-20 z-40 backdrop-blur-md">
             <div>
               <span className="text-xs font-semibold text-slate-400">ইউনিট: বিজ্ঞান (Physics, Chem, Math, Bio)</span>
-              <p className="text-sm font-bold text-white">উত্তর দেওয়া হয়েছে: {Object.keys(userAnswers).length}/{scienceQuestions.length}</p>
+              <p className="text-sm font-bold text-white">উত্তর দেওয়া হয়েছে: {Object.keys(userAnswers).length}/{scienceQuestions.length}</p>
             </div>
             <div className={`flex items-center gap-2 text-base font-black px-4 py-1.5 rounded-xl border ${
               timeLeft <= 15 ? 'bg-red-500/20 text-red-400 border-red-500/40 animate-pulse' : 'bg-slate-800 text-emerald-400 border-slate-700'
@@ -87,7 +85,6 @@ const ScienceMock = () => {
             </div>
           </div>
 
-          {/* Result Summary */}
           {isSubmitted && (
             <div className="bg-gradient-to-r from-slate-900 via-emerald-950/40 to-slate-900 border border-emerald-500/40 rounded-3xl p-6 text-center space-y-4">
               <h3 className="text-xl font-bold text-white">টেস্ট সমাপ্ত! আপনার রেজাল্ট:</h3>
@@ -111,7 +108,6 @@ const ScienceMock = () => {
             </div>
           )}
 
-          {/* Questions */}
           <div className="space-y-4">
             {scienceQuestions.map((q, idx) => {
               const selected = userAnswers[q.id];

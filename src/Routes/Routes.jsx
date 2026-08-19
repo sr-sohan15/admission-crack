@@ -3,7 +3,7 @@ import RootLayout from "../layouts/RootLayout";
 import Home from "../Pages/Home";
 import ScienceHome from "../Pages/Science/ScienceHome";
 import SubjectHacks from "../Pages/SubjectHacks";
-import MockExam from "../Pages/MockExam"; // অথবা ScienceMock
+import MockExam from "../Pages/MockExam";
 import Bookmarks from "../Pages/Bookmarks";
 import ErrorPage from "../Pages/ErrorPage";
 
@@ -26,11 +26,11 @@ export const router = createBrowserRouter([
         element: <SubjectHacks />
       },
       {
-        path: "/science/mock", // <--- এই পাথটি মিসিং ছিল
+        path: "/science/mock",
         element: <MockExam />
       },
       {
-        path: "/mock-exam", // <--- টপ ন্যাভবার সাপোর্ট
+        path: "/mock-exam",
         element: <MockExam />
       },
       {
@@ -39,4 +39,6 @@ export const router = createBrowserRouter([
       }
     ]
   }
-]);
+], {
+  basename: "/admission-crack"
+});
