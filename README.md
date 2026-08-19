@@ -1,16 +1,47 @@
-# React + Vite
+## 📂 Project Directory Structure
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+admission-crack/
+├── dist/                          # Production build files
+├── public/                        # Static assets
+│   ├── favicon.svg
+│   ├── icons.svg
+│   └── munia.jpg                  # Special dedication image
+├── src/
+│   ├── Components/                # Reusable UI components
+│   │   ├── Footer.jsx
+│   │   ├── ForMyLove.jsx          # Dedication & full view photo modal
+│   │   ├── MissionTrackerModal.jsx
+│   │   ├── Navbar.jsx
+│   │   └── QuestionCard.jsx
+│   ├── Data/                      # Application dataset & question banks
+│   │   └── Science/
+│   │       ├── biology/           # Botany & Zoology chapter files & data
+│   │       ├── Chemistry/         # 1st & 2nd paper chapter files & data
+│   │       ├── Higher Mathematics/# 1st & 2nd paper chapter files & data
+│   │       ├── physics/           # Physics 1st, 2nd paper chapters & physicsData
+│   │       ├── scienceData.js
+│   │       └── admissionData.js
+│   ├── Layouts/                   # Page layouts and wrappers
+│   │   └── RootLayout.jsx
+│   ├── Pages/                     # Main application views/pages
+│   │   ├── Science/
+│   │   ├── Bookmarks.jsx
+│   │   ├── ErrorPage.jsx
+│   │   ├── Home.jsx
+│   │   ├── MockExam.jsx
+│   │   ├── StreamSelection.jsx
+│   │   └── SubjectHacks.jsx
+│   ├── Routes/                    # App routing configuration
+│   │   └── Routes.jsx
+│   ├── App.css
+│   ├── App.jsx                    # Main app component
+│   ├── index.css                  # Tailwind CSS styles
+│   └── main.jsx                   # React entry point
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json                   # Dependencies and scripts
+├── README.md                      # Project documentation
+└── vite.config.js                 # Vite configuration
