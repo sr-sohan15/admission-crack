@@ -7,5 +7,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: "/", // এটিকে "/admission-crack/" থেকে পরিবর্তন করে শুধু "/" করে দিন
+  base: "/", // Vercel-এর জন্য অবশ্যই এটি "/" থাকতে হবে
 })
